@@ -24,12 +24,20 @@ public class ProdutoService {
     //GET
     @GetMapping
     public List<ProdutoModel> ProdutoModelList(){
-
+    return  produtoRepository.findAll();
     }
 
     //POST
     @PostMapping
     public ProdutoModel cadastrar(@RequestBody ProdutoModel produtoModel){
         return produtoRepository.save(produtoModel);
+    }
+
+    //PUT
+    @PutMapping
+    public ProdutoModel atualizar(@PathVariable Long id, @RequestBody ProdutoModel produtoModel){
+        ProdutoModel newProduto = produtoRepository.findById(id).get();
+        newProduto.setNome(produtoModel.getNome());
+        return produtoRepository.save(newProduto);
     }
 }
