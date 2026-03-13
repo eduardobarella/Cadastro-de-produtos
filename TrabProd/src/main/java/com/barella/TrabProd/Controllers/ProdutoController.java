@@ -37,6 +37,13 @@ public class ProdutoController {
     @DeleteMapping("/{id}")
     public void ResponseEntity<?> excluirProduto(@RequestBody Long id){
         produtoService.excluirProduto(id);
-        return org.springframework.http.ResponseEntity.noContent().build()0;
+        return org.springframework.http.ResponseEntity.noContent().build();
+    }
+
+    @PutMapping
+    public ProdutoModel atualizar(@RequestBody ProdutoModel produtoModel, @PathVariable Long id){
+        ProdutoModel model = produtoService.atualizar(id, produtoModel);
+        return org.springframework.http.ResponseEntity.ok().body(model);
+
     }
 }
