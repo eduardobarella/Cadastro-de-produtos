@@ -1,10 +1,16 @@
 package com.barella.TrabProd.models;
 
+import com.barella.TrabProd.Enums.ProdutoEnum;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+
 public class ProdutoModel {
     private long id;
     private String nome;
     private Double preco;
     private Integer quantidade;
+    @Enumerated(EnumType.STRING)
+    private ProdutoEnum status;
 
     public ProdutoModel() {
 
